@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Two Square Patterns</title>
+    <title>Checkerboard and X Patterns</title>
 </head>
 <body>
-    <canvas id="canvas1" width="400" height="400"></canvas>
-    <canvas id="canvas2" width="400" height="400"></canvas>
+    <canvas id="checkerboard" width="400" height="400"></canvas>
+    <canvas id="xPattern" width="400" height="400"></canvas>
     
     <script>
-        // Pattern 1: Using a while-loop
-        var canvas1 = document.getElementById("canvas1");
-        if (canvas1.getContext) {
-            var ctx1 = canvas1.getContext("2d");
-            var squareSize1 = 20;
-            var spacing1 = 10;
-            var x1 = spacing1;
-            var y1 = spacing1;
-            var totalSquares1 = 0;
+        // Checkerboard Pattern: Using a for-loop
+        var checkerboard = document.getElementById("checkerboard");
+        if (checkerboard.getContext) {
+            var ctxCheckerboard = checkerboard.getContext("2d");
+            var squareSize = 20;
+            var spacing = 10;
+            var numRows = checkerboard.height / (squareSize + spacing);
+            var numCols = checkerboard.width / (squareSize + spacing);
             
-            while (x1 + squareSize1 <= canvas1.width) {
-                ctx1.fillStyle = "blue";
-                ctx1.fillRect(x1, y1, squareSize1, squareSize1);
-                x1 += squareSize1 + spacing1;
-                totalSquares1++;
+            for (var i = 0; i < numRows; i++) {
+                for (var j = 0; j < numCols; j++) {
+                    if ((i + j) % 2 === 0) {
+                        ctxCheckerboard.fillStyle = "black";
+                    } else {
+                        ctxCheckerboard.fillStyle = "white";
+                    }
+                    ctxCheckerboard.fillRect(j * (squareSize + spacing), i * (squareSize + spacing), squareSize, squareSize);
+                }
             }
         }
         
-        // Pattern 2: Using a for-loop
-        var canvas2 = document.getElementById("canvas2");
-        if (canvas2.getContext) {
-            var ctx2 = canvas2.getContext("2d");
-            var squareSize2 = 20;
-            var spacing2 = 10;
-            var totalSquares2 = 0;
+        // X Pattern: Using a while-loop
+        var xPattern = document.getElementById("xPattern");
+        if (xPattern.getContext) {
+            var ctxXPattern = xPattern.getContext("2d");
+            var xSize = 20;
+            var xSpacing = 10;
+            var xX = xSpacing;
+            var xY = xSpacing;
             
-            for (var i = 0; i < 6; i++) {
-                for (var j = 0; j <= i; j++) {
-                    ctx2.fillStyle = "red";
-                    ctx2.fillRect(j * (squareSize2 + spacing2), i * (squareSize2 + spacing2), squareSize2, squareSize2);
-                    totalSquares2++;
-                }
+            while (xX + xSize <= xPattern.width) {
+                ctxXPattern.fillStyle = "blue";
+                ctxXPattern.fillRect(xX, xY, xSize, xSize);
+                ctxXPattern.fillRect(xPattern.width - xX - xSize, xY, xSize, xSize);
+                xX += xSize + xSpacing;
+                xY += xSize + xSpacing;
             }
         }
     </script>
