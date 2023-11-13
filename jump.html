@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jumping Red Square</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="400" height="200"></canvas>
+
+  <script>
+    // Get the canvas and context
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Square properties
+    let squareSize = 20;
+    let squareX = 50;
+    let squareY = canvas.height - squareSize;
+    let jumpHeight = 50;
+    let isJumping = false;
+
+    // Keyboard state variables
+    let keyLeft = false;
+    let keyRight = false;
+    let keyUp = false;
+
+    // Draw the red square
+    function drawSquare() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#FF0000"; // Red color
+      ctx.fillRect(squareX, squareY, squareSize, squareSize);
+    }
+
+    // Update square position
+    function updateSquare() {
+      if (keyLeft && squareX > 0) {
+        squareX -= 5;
+      }
+      if (keyRight && squareX < canvas.width - squareSize) {
+        squareX += 5;
+      }
+      if (keyUp && !isJumping) {
+        jump();
+      }
+      if (isJumping) {
+        squareY -= 5;
+        jumpHeight -= 5;
+        if (jumpHeight <= 0) {
+          isJumping = false;
+        }
+      } else if (squareY < canvas.height - squareSize) {
+        squareY += 5;
+      }
+    }
+
+    // Handle key events
+    function handleKeyPress(event) {
+      const key = event.key.toLowerCase();
+      if (key === "arrowleft" || key === "a") {
+        keyLeft = true;
+      } else if (key === "arrowright" || key === "d") {
+        keyRight = true;
+      } else if (key === "arrowup" || key === "w") {
+        keyUp = true;
+      }
+    }
+
+    function handleKeyRelease(event) {
+      const key = event.key.toLowerCase();
+      if (key === "arrowleft" || key === "a") {
+        keyLeft = false;
+      } else if (key === "arrowright" || key === "d") {
+        keyRight = false;
+      } else if (key === "arrowup" || key === "w") {
+        keyUp = false;
+      }
+    }
+
+    // Jump function
+    function jump() {
+      isJumping = true;
+      jumpHeight = 50;
+    }
+
+    // Event listeners
+    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener("keyup", handleKeyRelease);
+
+    // Game loop
+    function gameLoop() {
+      updateSquare();
+      drawSquare();
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Start the game loop
+    gameLoop();
+  </script>
+</body>
+</html>
+
