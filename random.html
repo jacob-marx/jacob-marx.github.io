@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baseball Training Facility - Guest Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Guest Registration Form</h2>
+
+  <form id="registrationForm">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter 10-digit phone number" required>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" min="5" max="99" required>
+
+    <label for="experience">Baseball Experience:</label>
+    <select id="experience" name="experience" required>
+      <option value="" disabled selected>Select your experience level</option>
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+
+    <label>Training Interest:</label>
+    <div>
+      <input type="checkbox" id="hitting" name="trainingInterest" value="hitting">
+      <label for="hitting">Hitting</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="fielding" name="trainingInterest" value="fielding">
+      <label for="fielding">Fielding</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="pitching" name="trainingInterest" value="pitching">
+      <label for="pitching">Pitching</label>
+    </div>
+
+    <label for="otherInterest">Other Training Interests:</label>
+    <textarea id="otherInterest" name="otherInterest" rows="4" placeholder="Enter any additional training interests"></textarea>
+
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+
+  <script>
+    function submitForm() {
+      // You can customize this function to handle form submission (e.g., send data to a server)
+      alert('Form submitted!'); // For demonstration purposes
+    }
+  </script>
+
+</body>
+</html>
