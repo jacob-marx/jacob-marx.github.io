@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incident and Accident Report Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Incident and Accident Report Form</h2>
+
+  <form id="incidentForm">
+    <label for="incidentDate">Incident Date:</label>
+    <input type="date" id="incidentDate" name="incidentDate" required>
+
+    <label for="incidentTime">Incident Time:</label>
+    <input type="time" id="incidentTime" name="incidentTime" required>
+
+    <label for="location">Location of Incident:</label>
+    <input type="text" id="location" name="location" required>
+
+    <label for="incidentType">Type of Incident:</label>
+    <input type="text" id="incidentType" name="incidentType" required>
+
+    <label for="description">Description of Incident:</label>
+    <textarea id="description" name="description" rows="4" required></textarea>
+
+    <label for="injuredPerson">Name of Injured Person (if applicable):</label>
+    <input type="text" id="injuredPerson" name="injuredPerson">
+
+    <label for="contactInfo">Contact Information of Injured Person (if applicable):</label>
+    <input type="text" id="contactInfo" name="contactInfo">
+
+    <label for="witnesses">Names of Witnesses (if any):</label>
+    <input type="text" id="witnesses" name="witnesses">
+
+    <label for="additionalComments">Additional Comments:</label>
+    <textarea id="additionalComments" name="additionalComments" rows="4"></textarea>
+
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+
+  <script>
+    function submitForm() {
+      // You can customize this function to handle form submission (e.g., send data to a server)
+      alert('Incident report submitted!'); // For demonstration purposes
+      document.getElementById("incidentForm").reset(); // Reset the form after submission
+    }
+  </script>
+
+</body>
+</html>
