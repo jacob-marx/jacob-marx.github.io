@@ -12,7 +12,7 @@ function CalculateWage() {
     const overtimeWage = OvertimeHours * OvertimeHourlyPayRate;
 
     //Calculate total wage
-    const totalWage = regularWage + overtimeWage
+    const totalWage = regularWage + overtimeWage 
 
     //Display the results
     const regularWageResult = document.getElementById("regularWageResult");
